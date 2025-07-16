@@ -1,40 +1,111 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bantu African Hair Braiding Salon — Booking App 💇🏾‍♀️
 
-## Getting Started
+A full-stack salon management web application built with Next.js 14, Drizzle ORM, Neon Database, and Kinde Auth to modernize and simplify the ticketing and customer management process for hair salons.
 
-First, run the development server:
+---
+
+## Project Purpose
+
+Replace traditional salon notebooks with a streamlined, role-based booking system that supports:
+
+* Secure employee logins
+* Ticket creation and assignment
+* Customer tracking
+* Role-based permissions (Employee, Manager, Admin)
+* Light/dark mode toggle
+* Responsive UI for desktop, tablet, and phone
+
+---
+
+## Built With
+
+* Next.js 14 App Router
+* TypeScript
+* Tailwind CSS + ShadCN UI
+* Drizzle ORM
+* Neon HTTP Adapter
+* Kinde (passwordless authentication & role-based permissions)
+
+---
+
+## Project Structure Highlights
+
+* `/src/app` — Core routing and layout
+* `/src/app/(salon)` — Salon-specific pages
+* `/src/components` — Header, footer, reusable buttons, form elements
+* `/src/lib/queries` — Drizzle ORM database queries
+* `/src/zod-schemas` — Validation for customers and tickets
+* `/src/db` — Schema definitions and migration scripts
+* `/public/images` — Static assets
+
+---
+
+## Features Implemented (52.4% Complete) 🚧
+
+* Public homepage with salon info
+* Passwordless employee login via Kinde
+* Open tickets page (in progress)
+* CRUD for tickets and customers
+* Ticket status (OPEN / COMPLETED)
+* User roles: Admin, Manager, Employee
+* Weekly login requirement via SSO timeout
+* Kinde-based permission management
+* Light/dark theme toggle
+* Mobile-responsive layout
+
+---
+
+## Middleware & Access Control
+
+* `middleware.ts` handles route protection
+* Routes like `/tickets` are protected and role-restricted
+* Kinde ensures suspended users lose access immediately
+
+---
+
+## Tech Highlights
+
+* ShadCN UI — Component library for styling and accessibility
+* Drizzle ORM — Database layer using SQL migrations
+* Neon — Serverless PostgreSQL with HTTP adapter
+* Kinde — Handles user authentication and permissions
+* Zod — Schema validation for user input
+
+---
+
+## Common Dev Commands 🧑🏾‍💻
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm i drizzle-orm @neondatabase/serverless
+npm i -D drizzle-kit tsx dotenv
+npm run db:generate
+npm run db:migrate
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Authentication Flow (Kinde)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* Passwordless login enabled
+* Custom roles set: `admin`, `manager`, `employee`
+* Self-signup disabled
+* SSO timeout = 7 days
+* Logout & redirect logic managed in `.env.local`
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Example Routes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Booking form: `/booking/form?customerId=2`
+* Ticket edit: `/tickets/form?ticketId=24`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Status
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Development is still ongoing. Upcoming tasks include:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# bantu-salon-booking-app
->>>>>>> 60b6313f709ab29798b61a9b82e55caef11391e7
+* Ticket search and filters
+* Locking unauthorized pages
+* Role-based edit/delete permissions
+* Improved mobile support
