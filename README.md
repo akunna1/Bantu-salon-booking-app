@@ -1,111 +1,79 @@
-# Bantu African Hair Braiding Salon — Booking App 💇🏾‍♀️
+# Bantu African Hair Braiding Salon Booking App 💇🏾‍♀️✨🖥️
 
-A full-stack salon management web application built with Next.js 14, Drizzle ORM, Neon Database, and Kinde Auth to modernize and simplify the ticketing and customer management process for hair salons.
+This web application is designed to modernize how small salons manage customer records, service tickets, and staff roles. Built with Next.js, Drizzle ORM, Neon, and Kinde Auth, it replaces traditional notebooks with a streamlined, secure, and mobile-friendly booking system.
 
 ---
 
-## Project Purpose
+## Project Overview
 
-Replace traditional salon notebooks with a streamlined, role-based booking system that supports:
+**Bantu Salon App** simplifies salon operations through:
 
-* Secure employee logins
-* Ticket creation and assignment
-* Customer tracking
-* Role-based permissions (Employee, Manager, Admin)
+* Passwordless employee login
+* Real-time service ticket tracking
+* Customer data management
+* Role-based access (Admin, Manager, Employee)
 * Light/dark mode toggle
-* Responsive UI for desktop, tablet, and phone
+* Clean, responsive design optimized for desktop and mobile
 
 ---
 
-## Built With
+## Technologies Used
 
-* Next.js 14 App Router
-* TypeScript
-* Tailwind CSS + ShadCN UI
-* Drizzle ORM
-* Neon HTTP Adapter
-* Kinde (passwordless authentication & role-based permissions)
-
----
-
-## Project Structure Highlights
-
-* `/src/app` — Core routing and layout
-* `/src/app/(salon)` — Salon-specific pages
-* `/src/components` — Header, footer, reusable buttons, form elements
-* `/src/lib/queries` — Drizzle ORM database queries
-* `/src/zod-schemas` — Validation for customers and tickets
-* `/src/db` — Schema definitions and migration scripts
-* `/public/images` — Static assets
+* **Framework & Language**: Next.js 14 (App Router), TypeScript
+* **UI Components**: Tailwind CSS, ShadCN UI
+* **Database**: Drizzle ORM with Neon (serverless PostgreSQL)
+* **Authentication**: Kinde (SSO, permissions, passwordless login)
+* **Validation & Utilities**: Zod, custom middleware, reusable components
 
 ---
 
-## Features Implemented (52.4% Complete) 🚧
+## Core Features
 
-* Public homepage with salon info
-* Passwordless employee login via Kinde
-* Open tickets page (in progress)
-* CRUD for tickets and customers
-* Ticket status (OPEN / COMPLETED)
-* User roles: Admin, Manager, Employee
-* Weekly login requirement via SSO timeout
-* Kinde-based permission management
-* Light/dark theme toggle
-* Mobile-responsive layout
+* ✅ Public landing page with contact info
+* ✅ Secure passwordless login for employees
+* ✅ Role management via Kinde (Admin, Manager, Employee)
+* ✅ CRUD functionality for customers and service tickets
+* ✅ Weekly login requirement (via SSO timeout)
+* ✅ Toggleable light/dark mode
+* ✅ Fully responsive UI for phones, tablets, and desktops
+* 🔜 Upcoming: role-specific access control, ticket filters, page locking
 
 ---
 
-## Middleware & Access Control
+## Folder Highlights
 
-* `middleware.ts` handles route protection
-* Routes like `/tickets` are protected and role-restricted
-* Kinde ensures suspended users lose access immediately
-
----
-
-## Tech Highlights
-
-* ShadCN UI — Component library for styling and accessibility
-* Drizzle ORM — Database layer using SQL migrations
-* Neon — Serverless PostgreSQL with HTTP adapter
-* Kinde — Handles user authentication and permissions
-* Zod — Schema validation for user input
+* `src/app/(salon)` – Routes for booking, tickets, users
+* `src/components/ui` – ShadCN-based reusable elements
+* `src/db` – Drizzle schema, migration scripts
+* `src/lib/queries` – SQL queries for customers and tickets
+* `middleware.ts` – Handles protected routes
 
 ---
 
-## Common Dev Commands 🧑🏾‍💻
+## Dev Setup & Commands
 
 ```bash
-npm i drizzle-orm @neondatabase/serverless
-npm i -D drizzle-kit tsx dotenv
-npm run db:generate
-npm run db:migrate
+npm install
+npm run db:generate    # Generate types from schema
+npm run db:migrate     # Run database migration
 ```
 
 ---
 
-## Authentication Flow (Kinde)
+## Authentication & Permissions
 
-* Passwordless login enabled
-* Custom roles set: `admin`, `manager`, `employee`
-* Self-signup disabled
-* SSO timeout = 7 days
-* Logout & redirect logic managed in `.env.local`
-
----
-
-## Example Routes
-
-* Booking form: `/booking/form?customerId=2`
-* Ticket edit: `/tickets/form?ticketId=24`
+* Kinde handles secure login and user roles
+* Self-signup is disabled for security
+* Permissions set in Kinde dashboard for Admin, Manager, Employee
+* Session timeout: 7 days of inactivity
+* Suspended users lose access immediately
 
 ---
 
 ## Status
 
-Development is still ongoing. Upcoming tasks include:
+The app is currently **52.4% complete**. In-progress features include:
 
-* Ticket search and filters
-* Locking unauthorized pages
-* Role-based edit/delete permissions
-* Improved mobile support
+* Ticket search and filtering
+* Page locking by role
+* Responsive refinements
